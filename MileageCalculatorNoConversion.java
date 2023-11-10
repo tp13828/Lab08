@@ -114,7 +114,7 @@ public class MileageCalculatorNoConversion extends Application {
 
 	private void changeLabels() {
 		// distinguish between L/100KM and MPG
-		if (cbo.getValue().equals("MPG") && lblCapacity.getText().equals(defaultCapacity)) {
+		if (!cbo.getValue().equals("MPG") && lblCapacity.getText().equals(defaultCapacity)) {
 			// update labels
 			lblCapacity.setText(altCapacity);
 			lblDistance.setText(altMileage);
@@ -144,7 +144,7 @@ public class MileageCalculatorNoConversion extends Application {
 		// check for type of calculation
 		double result = 0.0;
 
-		if (cbo.getValue().equals("MPG")) {
+		if (cbo.getValue().equals("L/100KM")) {
 
 			// liters / 100KM
 			result = (distance != 0) ? capacity / (distance / 100.0) : 0;
