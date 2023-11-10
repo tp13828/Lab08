@@ -4,7 +4,7 @@
  * Author: Stella Pham and Bao Pham 
  * Created on: Oct 25, 2023
  * Last Modified: Nov 10, 2023
- * Description: Displays various windows that lets you calculate miles per gallon, kilo per liter, and kilo/100L
+ * Description: Lets you calculate miles per gallon or l/100 km
  */
 package ch14;
 
@@ -114,7 +114,7 @@ public class MileageCalculatorNoConversion extends Application {
 
 	private void changeLabels() {
 		// distinguish between L/100KM and MPG
-		if (cbo.getValue().equals("MPG") && lblCapacity.getText().equals(defaultCapacity)) {
+		if (!cbo.getValue().equals("MPG") && lblCapacity.getText().equals(defaultCapacity)) {
 			// update labels
 			lblCapacity.setText(altCapacity);
 			lblDistance.setText(altMileage);
@@ -144,7 +144,7 @@ public class MileageCalculatorNoConversion extends Application {
 		// check for type of calculation
 		double result = 0.0;
 
-		if (cbo.getValue().equals("MPG")) {
+		if (cbo.getValue().equals("L/100KM")) {
 
 			// liters / 100KM
 			result = (distance != 0) ? capacity / (distance / 100.0) : 0;
