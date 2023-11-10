@@ -144,7 +144,7 @@ public class MileageCalculatorNoConversion extends Application {
 		// check for type of calculation
 		double result = 0.0;
 
-		if (cbo.getValue().equals("L/100KM")) {
+		if (!cbo.getValue().equals("MPG")) {
 
 			// liters / 100KM
 			result = (distance != 0) ? capacity / (distance / 100.0) : 0;
