@@ -9,15 +9,19 @@
 package ch14;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
 
 public class MileageCalculatorNoConversion extends Application {
 	// default values/strings
@@ -44,23 +48,27 @@ public class MileageCalculatorNoConversion extends Application {
     private TextField tfCapacity = new TextField(defaultEntry);
     private TextField tfResult = new TextField(defaultCalc);
     
-    private RadioButton rbMPG = new RadioButton(defaultResult);
-    private RadioButton rbKPL = new RadioButton(altResult);
-    private ToggleGroup tgConv = new ToggleGroup();
+    
+    ObservableList<String> items = FXCollections.observableArrayList("MPG", "L/100 KM");
+    ComboBox<String> cmb1 = new ComboBox<>(items);
+    
+    //private RadioButton rbMPG = new RadioButton(defaultResult);
+    //private RadioButton rbKPL = new RadioButton(altResult);
+    //private ToggleGroup tgConv = new ToggleGroup();
     
     private GridPane mainPane = new GridPane();
     
     public void start(Stage primaryStage) {   	
     	// set toggle group for RadioButtons
-    	rbMPG.setToggleGroup(tgConv);
-    	rbKPL.setToggleGroup(tgConv);
+    	//rbMPG.setToggleGroup(tgConv);
+    	//rbKPL.setToggleGroup(tgConv);
     	
         // set preferences for UI components
         tfDistance.setMaxWidth(txtWidth);
         tfCapacity.setMaxWidth(txtWidth);
         tfResult.setMaxWidth(txtWidth);
         tfResult.setEditable(false);
-        rbMPG.setSelected(true);
+        //rbMPG.setSelected(true);
         
         // create a main grid pane to hold items
         mainPane.setPadding(new Insets(10.0));
@@ -69,8 +77,8 @@ public class MileageCalculatorNoConversion extends Application {
         
         // add items to mainPane
         mainPane.add(lblEffType, 0, 0);
-        mainPane.add(rbMPG, 0, 1);
-        mainPane.add(rbKPL, 1, 1);
+        mainPane.add(cmb1, 0, 1);
+        //mainPane.add(rbKPL, 1, 1);
         mainPane.add(lblDistance, 0, 2);
         mainPane.add(tfDistance, 1, 2);
         mainPane.add(lblCapacity, 0, 3);
@@ -85,9 +93,9 @@ public class MileageCalculatorNoConversion extends Application {
         tfDistance.setOnAction(e -> calcMileage());
         tfCapacity.setOnAction(e -> calcMileage());
         tfResult.setOnAction(e -> calcMileage());
-        rbKPL.setOnAction(e -> changeLabels());
-        rbMPG.setOnAction(e -> changeLabels());     
-        btnReset.setOnAction(e -> resetForm());
+        //cmb1.setOnAction(e -> changeLabels());
+        //rbMPG.setOnAction(e -> changeLabels());     
+        //btnReset.setOnAction(e -> resetForm());
         
         // create a scene and place it in the stage
         Scene scene = new Scene(mainPane); 
@@ -106,6 +114,7 @@ public class MileageCalculatorNoConversion extends Application {
      * This needs to be separate to avoid converting when
      * the conversion is not necessary
      */
+    /*/
     private void changeLabels() {
     	// distinguish between L/100KM and MPG
     	if (rbKPL.isSelected() && lblCapacity.getText().equals(defaultCapacity)) {
@@ -134,7 +143,9 @@ public class MileageCalculatorNoConversion extends Application {
         	distance = Double.parseDouble(tfDistance.getText());
             capacity = Double.parseDouble(tfCapacity.getText());
         }
+    }
 
+        /*/
         // check for type of calculation
         double result = 0.0;
         if (rbKPL.isSelected()) {
@@ -150,8 +161,10 @@ public class MileageCalculatorNoConversion extends Application {
     }
     
     /**
-     * Reset all values in the application
+     * Reset all 
+     *values in the application
      */
+        /*
     private void resetForm() {
         // reset all form fields
     	rbMPG.setSelected(true);
@@ -162,6 +175,8 @@ public class MileageCalculatorNoConversion extends Application {
     	lblDistance.setText(defaultMileage);
     	lblResult.setText(defaultResult);
     }
+    */
+    
 	
 	
 	public static void main(String[] args) {
