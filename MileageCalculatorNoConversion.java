@@ -162,7 +162,7 @@ public class MileageCalculatorNoConversion extends Application {
 	 */
 
 	private void resetForm() {
-		// rbMPG.setSelected(true);
+		cbo.setValue("MPG");
 		tfDistance.setText(defaultEntry);
 		tfCapacity.setText(defaultEntry);
 		tfResult.setText(defaultCalc);
