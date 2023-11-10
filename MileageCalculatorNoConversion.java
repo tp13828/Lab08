@@ -140,42 +140,36 @@ public class MileageCalculatorNoConversion extends Application {
 			distance = Double.parseDouble(tfDistance.getText());
 			capacity = Double.parseDouble(tfCapacity.getText());
 		}
-	}
 
-	/*
-	// check for type of calculation
-	double result = 0.0;
+		// check for type of calculation
+		double result = 0.0;
 
-	if(cbo.getValue().equals("MPG"))
-	{
-		// liters / 100KM
-		result = (distance != 0) ? capacity / (distance / 100.0) : 0;
-	}else
-	{
-		// MPG
-		result = (capacity != 0) ? distance / capacity : 0;
-	}
+		if (cbo.getValue().equals("MPG")) {
 
-	// update calculation fields with currency formatting
-	tfResult.setText(String.format("%.2f",result));
+			// liters / 100KM
+			result = (distance != 0) ? capacity / (distance / 100.0) : 0;
+		} else {
+			// MPG
+			result = (capacity != 0) ? distance / capacity : 0;
+		}
+
+		// update calculation fields with currency formatting
+		tfResult.setText(String.format("%.2f", result));
 	}
-	*/
 
 	/**
-     * Reset all 
-     *values in the application
-     */
-        
-    private void resetForm() {
-        // reset all form fields
-    	//rbMPG.setSelected(true);
-        tfDistance.setText(defaultEntry);
-        tfCapacity.setText(defaultEntry);
-        tfResult.setText(defaultCalc);
-        lblCapacity.setText(defaultCapacity);
-    	lblDistance.setText(defaultMileage);
-    	lblResult.setText(defaultResult);
-    }
+	 * Reset all values in the application
+	 */
+
+	private void resetForm() {
+		// rbMPG.setSelected(true);
+		tfDistance.setText(defaultEntry);
+		tfCapacity.setText(defaultEntry);
+		tfResult.setText(defaultCalc);
+		lblCapacity.setText(defaultCapacity);
+		lblDistance.setText(defaultMileage);
+		lblResult.setText(defaultResult);
+	}
 
 	public static void main(String[] args) {
 		launch(args);
